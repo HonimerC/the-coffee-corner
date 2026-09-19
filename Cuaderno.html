@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Coffee Corner — Menu interactivo en formato libreto. Descubre nuestros cafes, comidas y postres en Maturin, Venezuela.">
+    <meta name="theme-color" content="#3C2415">
+    <title>The Coffee Corner — Menu Cuaderno</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='15' y='10' width='70' height='80' rx='4' fill='%23F5EDE3' stroke='%233C2415' stroke-width='3'/%3E%3Crect x='22' y='17' width='56' height='66' rx='2' fill='none' stroke='%23C4956A' stroke-width='1.5'/%3E%3Cline x1='30' y1='32' x2='70' y2='32' stroke='%233C2415' stroke-width='2'/%3E%3Cline x1='30' y1='42' x2='65' y2='42' stroke='%233C2415' stroke-width='1.5'/%3E%3Cline x1='30' y1='50' x2='60' y2='50' stroke='%233C2415' stroke-width='1.5'/%3E%3Cline x1='30' y1='58' x2='55' y2='58' stroke='%233C2415' stroke-width='1.5'/%3E%3Ccircle cx='50' cy='22' r='4' fill='%23C4956A'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           THE COFFEE CORNER — DESIGN SYSTEM
+           ============================================ */
+        :root {
+            /* Espresso Browns */
+            --espresso: #3C2415;
+            --dark-roast: #5C3A21;
+            --medium-roast: #7B5233;
+
+            /* Warm Accents */
+            --caramel: #C4956A;
+            --latte: #D4A574;
+            --mocha: #A67B5B;
+
+            /* Creams */
+            --cream: #F5EDE3;
+            --warm-white: #FDFAF6;
+            --oat: #E8DDD0;
+
+            /* Greens */
+            --sage: #6B7F5E;
+            --moss: #4A5E3F;
+            --leaf: #8BA37A;
+
+            /* Supporting */
+            --terracotta: #B5694D;
+            --ink: #2D2A27;
+
+            /* Semantic */
+            --color-primary: var(--espresso);
+            --color-primary-deep: var(--dark-roast);
+            --color-primary-light: var(--medium-roast);
+            --color-secondary: var(--terracotta);
+            --color-secondary-light: #C47A60;
+            --color-accent: var(--sage);
+            --color-accent-warm: var(--caramel);
+            --color-accent-light: var(--latte);
+            --color-bg: var(--warm-white);
+            --color-bg-alt: var(--oat);
+            --color-surface: var(--cream);
+            --color-text: var(--ink);
+            --color-text-muted: var(--mocha);
+            --color-text-on-dark: var(--cream);
+            --color-border: var(--oat);
+            --color-success: var(--moss);
+            --color-error: #9E4444;
+
+            /* Typography */
+            --font-display: 'Alegreya', Georgia, serif;
+            --font-heading: 'Alegreya', Georgia, serif;
+            --font-body: 'Alegreya', Georgia, serif;
+            --font-category: 'Libre Franklin', 'Arial Narrow', sans-serif;
+
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+
+            /* Borders */
+            --radius-sm: 6px;
+            --radius: 10px;
+            --radius-lg: 14px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(60, 36, 21, 0.08);
+            --shadow: 0 4px 16px rgba(60, 36, 21, 0.12);
+            --shadow-lg: 0 12px 40px rgba(60, 36, 21, 0.18);
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-fast: 150ms var(--ease-out);
+            --transition: 250ms var(--ease-out);
+            --transition-slow: 400ms var(--ease-in-out);
+        }
+
+        /* ============================================
+           DARK MODE — disabled for menu (always light page colors)
+           ============================================ */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg: #323232;
+            }
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            overflow: hidden;
+            height: 100vh;
+            height: 100dvh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        :focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* ============================================
+           ENTRANCE ANIMATIONS (Reveal)
+           ============================================ */
+        .reveal {
+            animation: rise 0.7s ease both;
+        }
+        .reveal.delay-1 { animation-delay: 0.12s; }
+        .reveal.delay-2 { animation-delay: 0.24s; }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+           BUTTON HOVER EFFECTS
+           ============================================ */
+        .back-cover-cta,
+        .mute-btn {
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .back-cover-cta:hover,
+        .mute-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 124, 89, 0.3);
+        }
+
+        /* ============================================
+           FLIP-BOOK CONTAINER
+           ============================================ */
+        .book-wrapper {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #323232;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .book-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.025;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .book-wrapper::before { opacity: 0.04; }
+        }
+
+        /* ============================================
+           PAGE-FLIP OVERRIDES
+           ============================================ */
+        .flip-book {
+            display: none;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============================================
+           PAGE BASE — soft flexible book pages
+           ============================================ */
+        .page {
+            background-color: #FDFAF6;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ============================================
+           DECORATIVE CORNER FLOURISHES
+           ============================================ */
+        .page[data-page="hot-drinks"]::before,
+        .page[data-page="hot-drinks"]::after,
+        .page[data-page="food"]::before,
+        .page[data-page="food"]::after,
+        .page[data-page="combos"]::before,
+        .page[data-page="combos"]::after,
+        .page[data-page="desserts"]::before,
+        .page[data-page="desserts"]::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid var(--color-accent-warm);
+            opacity: 0.3;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .page[data-page="hot-drinks"]::before,
+        .page[data-page="food"]::before,
+        .page[data-page="combos"]::before,
+        .page[data-page="desserts"]::before {
+            top: 10px; left: 10px;
+            border-right: none; border-bottom: none;
+        }
+
+        .page[data-page="hot-drinks"]::after,
+        .page[data-page="food"]::after,
+        .page[data-page="combos"]::after,
+        .page[data-page="desserts"]::after {
+            bottom: 10px; right: 10px;
+            border-left: none; border-top: none;
+        }
+
+        /* ============================================
+           PAGE CONTENT WRAPPER
+           ============================================ */
+        .page-content {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
+            padding: 4% 4% 6%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            pointer-events: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .page-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ============================================
+           CATEGORY HEADER
+           ============================================ */
+        .page-category {
+            font-family: var(--font-category);
+            font-size: clamp(0.95rem, 3vw, 1.35rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--color-primary);
+            text-align: center;
+            padding: 14px 0 10px;
+            border-bottom: 2px solid var(--color-accent-warm);
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        /* Ornament under category */
+        .page-category-ornament {
+            display: flex;
+            justify-content: center;
+            margin-top: -1px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        .page-category-ornament svg {
+            width: 36px;
+            height: 36px;
+            color: var(--color-accent-warm);
+        }
+
+        /* ============================================
+           TWO-COLUMN MENU GRID
+           ============================================ */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 8%;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .menu-item__name {
+            font-family: var(--font-body);
+            font-size: clamp(0.92rem, 2.4vw, 1.15rem);
+            font-weight: 600;
+            color: var(--color-text);
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        .menu-item__dots {
+            flex: 1;
+            border-bottom: 1px dotted var(--color-accent-warm);
+            min-width: 10px;
+            margin-bottom: 3px;
+            opacity: 0.5;
+        }
+
+        .menu-item__price {
+            font-family: var(--font-display);
+            font-size: clamp(0.95rem, 2.6vw, 1.2rem);
+            color: var(--color-secondary);
+            text-align: right;
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        /* ============================================
+           COVER PAGE — same style as regular pages
+           ============================================ */
+        .page[data-page="cover"] {
+            background-color: #FDFAF6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .page[data-page="cover"] .cover-frame {
+            position: absolute;
+            inset: 12px;
+            border: 1.5px solid var(--color-accent-warm);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .page[data-page="cover"] .cover-inner-frame {
+            position: absolute;
+            inset: 20px;
+            border: 0.5px solid var(--color-accent-warm);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 8px;
+            padding: 20px;
+        }
+
+        .cover-logo-img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid var(--color-accent-warm);
+            padding: 4px;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+
+        .cover-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            letter-spacing: 0.06em;
+            line-height: 1.05;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .cover-subtitle {
+            font-family: var(--font-category);
+            font-size: clamp(0.8rem, 2.8vw, 1.05rem);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .cover-ornament {
+            width: 120px;
+            height: 40px;
+            color: var(--color-accent-warm);
+            opacity: 0.55;
+            margin: 8px 0;
+        }
+
+        .cover-tagline {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            font-style: italic;
+            opacity: 0.6;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .cover-location {
+            font-family: var(--font-category);
+            font-size: clamp(0.6rem, 1.6vw, 0.72rem);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.45;
+            margin-top: 12px;
+        }
+
+        /* ============================================
+           BACK COVER — same style as regular pages
+           ============================================ */
+        .page[data-page="back-cover"] {
+            background-color: #FDFAF6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .page[data-page="back-cover"] .cover-frame {
+            position: absolute;
+            inset: 12px;
+            border: 1.5px solid var(--color-accent-warm);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .back-cover-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .back-cover-logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-accent-warm);
+            padding: 3px;
+            background: rgba(255,255,255,0.05);
+            margin-top: 16px;
+        }
+
+        .back-cover-brand {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 6vw, 2.8rem);
+            letter-spacing: 0.08em;
+            opacity: 0.9;
+            font-weight: 700;
+        }
+
+        .back-cover-tagline {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+            font-style: italic;
+            opacity: 0.65;
+            max-width: 80%;
+        }
+
+        .back-cover-divider {
+            width: 60px;
+            height: 1.5px;
+            background: var(--color-accent-warm);
+            opacity: 0.5;
+            margin: 4px 0;
+        }
+
+        .back-cover-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .back-cover-info-item {
+            font-family: var(--font-category);
+            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+            opacity: 0.7;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-cover-info-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .back-cover-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .back-cover-social a {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid var(--color-accent-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-on-dark);
+            opacity: 0.65;
+            transition: opacity var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .back-cover-social a:hover { opacity: 1; transform: scale(1.08); }
+        .back-cover-social svg { width: 17px; height: 17px; fill: currentColor; }
+
+        .back-cover-ornament {
+            width: 100px;
+            height: 36px;
+            color: var(--color-accent-warm);
+            opacity: 0.4;
+            margin-top: 8px;
+        }
+
+        .back-cover-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 9px 22px;
+            border: 1.5px solid var(--color-accent-warm);
+            border-radius: var(--radius-full);
+            font-family: var(--font-category);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-text-on-dark);
+            opacity: 0.7;
+            transition: opacity var(--transition-fast), background-color var(--transition-fast), transform .25s ease, box-shadow .25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .back-cover-cta:hover { opacity: 1; background: rgba(196, 149, 106, 0.15); }
+        .back-cover-cta svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ============================================
+           COMBO PAGE STYLES
+           ============================================ */
+        .combo-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .combo-item:last-child { border-bottom: none; }
+
+        .combo-item__header {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .combo-item__name {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2.6vw, 1.25rem);
+            font-weight: 700;
+            color: var(--color-text);
+            flex: 1;
+        }
+
+        .combo-item__dots {
+            flex: 1;
+            border-bottom: 1px dotted var(--color-accent-warm);
+            min-width: 20px;
+            margin-bottom: 4px;
+            opacity: 0.5;
+        }
+
+        .combo-item__price {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            color: var(--color-secondary);
+            white-space: nowrap;
+        }
+
+        .combo-item__desc {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+            color: var(--color-text-muted);
+            font-style: italic;
+            line-height: 1.4;
+            padding-right: 4%;
+        }
+
+        /* ============================================
+           MUTE BUTTON (hidden - sound always ON)
+           ============================================ */
+        .mute-btn {
+            display: none !important;
+        }
+        .mute-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-text-on-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow), 0 0 12px rgba(60, 36, 21, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1.5px solid var(--color-accent-warm);
+            opacity: 0.8;
+            transition: transform var(--transition-fast), opacity var(--transition-fast);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .mute-btn:hover { transform: scale(1.1); opacity: 1; }
+        .mute-btn:active { transform: scale(0.95); }
+
+        .mute-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .mute-btn.is-muted { background: var(--color-text-muted); border-color: var(--color-border); }
+        .mute-btn .icon-unmuted { display: block; }
+        .mute-btn .icon-muted { display: none; }
+        .mute-btn.is-muted .icon-unmuted { display: none; }
+        .mute-btn.is-muted .icon-muted { display: block; }
+
+        /* ============================================
+           FLOATING "VOLVER" BUTTON
+           ============================================ */
+        .volver-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 10px 26px;
+            background: var(--color-primary);
+            color: var(--color-text-on-dark);
+            font-family: var(--font-category);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: var(--radius-full);
+            border: 1.5px solid var(--color-accent-warm);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+        }
+
+        .volver-btn:hover { transform: translateX(-50%) translateY(-2px); box-shadow: var(--shadow-lg); background: var(--color-primary-deep); }
+        .volver-btn:active { transform: translateX(-50%) translateY(0) scale(0.97); }
+        .volver-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ============================================
+           PAGE INDICATOR (hidden)
+           ============================================ */
+        .page-indicator {
+            display: none !important;
+        }
+
+        /* ============================================
+           KEYBOARD HINT
+           ============================================ */
+        .keyboard-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 200;
+            padding: 14px 24px;
+            background: var(--color-primary-deep);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            border: 1px solid var(--color-accent-warm);
+            color: var(--color-text-on-dark);
+            font-family: var(--font-category);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .keyboard-hint.show { opacity: 0.9; }
+
+        .keyboard-hint kbd {
+            display: inline-block;
+            padding: 2px 7px;
+            background: rgba(196, 149, 106, 0.2);
+            border: 1px solid var(--color-accent-warm);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            margin: 0 2px;
+            color: var(--color-accent-light);
+        }
+
+        /* ============================================
+           LOADING STATE
+           ============================================ */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: var(--color-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+
+        .loading-ornament {
+            width: 50px;
+            height: 50px;
+            color: var(--color-accent-warm);
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .loading-text {
+            font-family: var(--font-category);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-on-dark);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 480px) {
+            .mute-btn { top: 12px; right: 12px; width: 38px; height: 38px; }
+            .mute-btn svg { width: 18px; height: 18px; }
+            .volver-btn { bottom: 16px; padding: 8px 20px; font-size: 0.75rem; }
+            .volver-btn svg { width: 14px; height: 14px; }
+            .page-indicator { bottom: 58px; font-size: 0.65rem; padding: 4px 10px; }
+            .menu-grid { padding: 0 6%; gap: 0 8px; }
+            .page-content { padding: 4% 3% 8%; }
+            .cover-logo-img { width: 110px; height: 110px; }
+        }
+
+        @media (min-width: 768px) {
+            .volver-btn { bottom: 32px; padding: 12px 30px; font-size: 0.88rem; }
+            .menu-grid { padding: 0 14%; }
+            .page-content { padding: 4% 5% 6%; }
+            .cover-logo-img { width: 160px; height: 160px; }
+        }
+
+        @media (min-width: 1024px) {
+            .menu-grid { padding: 0 18%; }
+            .page-content { padding: 4% 5% 6%; }
+            .cover-logo-img { width: 180px; height: 180px; }
+        }
+
+        /* ============================================
+           PAGO MOVIL MODAL
+           ============================================ */
+        .pago-movil-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--color-primary);
+            color: #FDFAF6;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-category);
+            font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .pago-movil-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(60, 36, 21, 0.3); }
+        .pago-movil-btn:active { transform: translateY(0) scale(0.97); }
+        .pago-movil-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 16px;
+        }
+
+        .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+        .modal {
+            background: #FDFAF6;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.is-open .modal { transform: translateY(0) scale(1); }
+
+        .modal__header {
+            padding: 24px 24px 16px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(60, 36, 21, 0.08);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .modal__close:hover { background: rgba(60, 36, 21, 0.15); transform: rotate(90deg); }
+        .modal__close svg { width: 18px; height: 18px; stroke: #3C2415; stroke-width: 2; fill: none; stroke-linecap: round; }
+
+        .modal__icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A5E3F, #6B7F5E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            color: #FDFAF6;
+        }
+
+        .modal__icon svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .modal__title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: #3C2415; margin-bottom: 4px; }
+        .modal__subtitle { font-size: 0.85rem; color: #3C2415; opacity: 0.6; }
+
+        .modal__body { padding: 0 24px 24px; }
+
+        .payment-info {
+            background: rgba(60, 36, 21, 0.05);
+            border: 1px solid rgba(60, 36, 21, 0.1);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .payment-info__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(60, 36, 21, 0.08);
+        }
+
+        .payment-info__row:last-child { border-bottom: none; }
+
+        .payment-info__label { font-family: var(--font-category); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7B5233; font-weight: 600; }
+        .payment-info__value { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #3C2415; }
+        .payment-info__bank { font-size: 0.85rem; color: #5C3A21; font-weight: 500; }
+
+        .payment-mesa-note {
+            background: rgba(74, 94, 63, 0.1);
+            border: 1px solid rgba(74, 94, 63, 0.2);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-style: italic;
+            color: #5C3A21;
+            text-align: center;
+        }
+
+        .modal__copy-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            background: #3C2415;
+            color: #FDFAF6;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font-category);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .modal__copy-btn:hover { background: #5C3A21; box-shadow: 0 4px 16px rgba(60, 36, 21, 0.2); transform: translateY(-1px); }
+        .modal__copy-btn:active { transform: translateY(0) scale(0.98); }
+        .modal__copy-btn.is-copied { background: #4A5E3F; }
+        .modal__copy-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            .mute-btn, .volver-btn, .page-indicator, .keyboard-hint, .loading-overlay { display: none !important; }
+            .book-wrapper { position: static; overflow: visible; height: auto; padding: 0; }
+            .flip-book { display: block !important; box-shadow: none; }
+            .page { page-break-after: always; }
+            .page-content { overflow: visible; position: relative; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+        <svg class="loading-ornament" viewBox="0 0 40 30" fill="none">
+            <path d="M10 28 Q8 20 12 15 Q16 10 14 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M20 28 Q18 18 22 12 Q26 6 24 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M30 28 Q28 20 32 15 Q36 10 34 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="loading-text">Abriendo menu...</div>
+    </div>
+
+    <!-- Mute Toggle -->
+    <button class="mute-btn" id="muteBtn" aria-label="Activar/desactivar sonido" title="Sonido (M)">
+        <svg class="icon-unmuted" viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <svg class="icon-muted" viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+    </button>
+
+    <!-- Floating Volver -->
+    <a href="Prototipo%20menu.html" class="volver-btn" id="volverBtn" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Volver al inicio
+    </a>
+
+    <!-- Page Indicator -->
+    <div class="page-indicator" id="pageIndicator" aria-live="polite">
+        <span class="page-indicator__current" id="pageCurrent">1</span>
+        <span>/</span>
+        <span id="pageTotal">6</span>
+    </div>
+
+    <!-- Keyboard Hint -->
+    <div class="keyboard-hint" id="keyboardHint" aria-hidden="true">
+        Usa         <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> para navegar &bull; <kbd>Esc</kbd> volver
+    </div>
+
+    <!-- ==========================================
+         FLIP-BOOK MENU
+         ========================================== -->
+    <div class="book-wrapper" role="main" aria-label="Menú interactivo de The Coffee Corner">
+        <div class="flip-book" id="book">
+
+            <!-- ==========================================
+                 PAGE 1: PORTADA (COVER)
+                 ========================================== -->
+            <div class="page" data-page="cover">
+                <div class="cover-frame"></div>
+                <div class="cover-inner-frame"></div>
+                <div class="cover-content">
+                    <img src="logo-coffee-corner.jpg" alt="The Coffee Corner Logo" class="cover-logo-img" loading="eager">
+
+                    <h1 class="cover-title">The Coffee Corner</h1>
+                    <p class="cover-subtitle">Cafe &amp; Bar</p>
+
+                    <!-- Coffee leaf branch ornament -->
+                    <svg class="cover-ornament" viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 20 Q30 8 60 20 Q90 32 110 20"/>
+                        <ellipse cx="35" cy="12" rx="9" ry="5.5" transform="rotate(-30 35 12)"/>
+                        <ellipse cx="60" cy="20" rx="9" ry="5.5"/>
+                        <ellipse cx="85" cy="28" rx="9" ry="5.5" transform="rotate(30 85 28)"/>
+                        <line x1="30" y1="14" x2="40" y2="10" opacity="0.4"/>
+                        <line x1="55" y1="20" x2="65" y2="20" opacity="0.4"/>
+                        <line x1="80" y1="26" x2="90" y2="30" opacity="0.4"/>
+                    </svg>
+
+                    <p class="cover-tagline">"Disfruta de la vida, sorbo a sorbo"</p>
+                    <p class="cover-location">Maturin, Monagas &#x1F335;</p>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PAGE 2: CAFE
+                 ========================================== -->
+            <div class="page" data-page="hot-drinks">
+                <div class="page-content">
+                    <div class="page-category" data-animate="category">Cafe</div>
+
+                    <div class="page-category-ornament">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu-grid">
+                        <div class="menu-item" data-animate="item" data-delay="0">
+                            <span class="menu-item__name">Americano</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$2.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="1">
+                            <span class="menu-item__name">Dalgona</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="2">
+                            <span class="menu-item__name">Latte</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="3">
+                            <span class="menu-item__name">Mocachino</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="4">
+                            <span class="menu-item__name">Capuccino</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PAGE 3: COMIDA
+                 ========================================== -->
+            <div class="page" data-page="food">
+                <div class="page-content">
+                    <div class="page-category" data-animate="category">Comida</div>
+
+                    <div class="page-category-ornament">
+                        <svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 18 Q8 6 16 8 Q24 6 28 18"/>
+                            <path d="M8 16 Q12 10 16 11 Q20 10 24 16" opacity="0.5"/>
+                            <line x1="16" y1="8" x2="16" y2="20" opacity="0.3"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu-grid">
+                        <div class="menu-item" data-animate="item" data-delay="0">
+                            <span class="menu-item__name">Alitas de Pollo</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$5.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="1">
+                            <span class="menu-item__name">Tequenos</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$4.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="2">
+                            <span class="menu-item__name">Nachos</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$4.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="3">
+                            <span class="menu-item__name">Enrollado</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$4.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="4">
+                            <span class="menu-item__name">Papas Fritas</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="5">
+                            <span class="menu-item__name">Panini (con papas fritas)</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$5.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="6">
+                            <span class="menu-item__name">Pizzas</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$6.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PAGE 4: COMBOS
+                 ========================================== -->
+            <div class="page" data-page="combos">
+                <div class="page-content">
+                    <div class="page-category" data-animate="category">Combos</div>
+
+                    <div class="page-category-ornament">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2 l3 6.5 L22 10 l-5 5 1.2 7L12 18.5 5.8 22 7 15 2 10l7-1.5z"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu-grid">
+                        <!-- Combo 1 -->
+                        <div class="menu-item" style="flex-wrap: wrap;">
+                            <span class="menu-item__name" style="font-weight: 700;">Pizza + Bebida</span>
+                            <span class="menu-item__dots"></span>
+                            <span class="menu-item__price">$7.50</span>
+                        </div>
+                        <div style="padding: 0 0 6px; font-size: clamp(0.7rem, 1.6vw, 0.8rem); color: var(--color-text-muted); opacity: 0.7;">Pizza personal + bebida de tu eleccion</div>
+
+                        <!-- Combo 2 -->
+                        <div class="menu-item" style="flex-wrap: wrap;">
+                            <span class="menu-item__name" style="font-weight: 700;">Enrollado + Bebida</span>
+                            <span class="menu-item__dots"></span>
+                            <span class="menu-item__price">$6.00</span>
+                        </div>
+                        <div style="padding: 0 0 6px; font-size: clamp(0.7rem, 1.6vw, 0.8rem); color: var(--color-text-muted); opacity: 0.7;">Enrollado + bebida caliente o fria</div>
+
+                        <!-- Combo 3 -->
+                        <div class="menu-item" style="flex-wrap: wrap;">
+                            <span class="menu-item__name" style="font-weight: 700;">Super Combo</span>
+                            <span class="menu-item__dots"></span>
+                            <span class="menu-item__price">$9.00</span>
+                        </div>
+                        <div style="padding: 0 0 6px; font-size: clamp(0.7rem, 1.6vw, 0.8rem); color: var(--color-text-muted); opacity: 0.7;">Platillo principal + bebida + postre</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PAGE 5: POSTRES Y OTROS
+                 ========================================== -->
+            <div class="page" data-page="desserts">
+                <div class="page-content">
+                    <div class="page-category" data-animate="category">Postres &amp; Bebidas</div>
+
+                    <div class="page-category-ornament">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 21h8"/>
+                            <path d="M12 17v4"/>
+                            <path d="M7 4h10"/>
+                            <path d="M6 4c0 0-1 3-1 7 0 3 2.5 5 7 5s7-2 7-5c0-4-1-7-1-7"/>
+                            <path d="M6 8c0 0-0.5 2 0.5 4"/>
+                            <path d="M18 8c0 0 0.5 2-0.5 4"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu-grid">
+                        <div class="menu-item" data-animate="item" data-delay="0">
+                            <span class="menu-item__name">Helados (copa con galleta)</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$3.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="1">
+                            <span class="menu-item__name">Malteadas</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$4.00</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="2">
+                            <span class="menu-item__name">Pastelitos</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$2.50</span>
+                        </div>
+                        <div class="menu-item" data-animate="item" data-delay="3">
+                            <span class="menu-item__name">Cerveza</span>
+                            <span class="menu-item__dots" data-animate="dots"></span>
+                            <span class="menu-item__price" data-animate="price">$2.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PAGE 6: CONTRAPORTADA - PAGO MOVIL
+                 ========================================== -->
+            <div class="page" data-page="back-cover">
+                <div class="cover-frame"></div>
+                <div class="back-cover-content">
+                    <img src="logo-coffee-corner.jpg" alt="The Coffee Corner" class="back-cover-logo-img">
+                    <p class="back-cover-brand">The Coffee Corner</p>
+                    <p class="back-cover-tagline">"Disfruta de la vida, sorbo a sorbo"</p>
+
+                    <div class="back-cover-divider"></div>
+
+                    <div class="back-cover-info">
+                        <span class="back-cover-info-item">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Mini C.C Cappadoro Local 17
+                        </span>
+                        <span class="back-cover-info-item">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Lun - Sab · 09:00 am - 08:00 pm
+                        </span>
+                        <span class="back-cover-info-item">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            @coffeecorner.mat
+                        </span>
+                    </div>
+
+                    <button type="button" class="pago-movil-btn" id="btnPagoMovil" aria-label="Ver datos de pago movil">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        Pago Movil
+                    </button>
+
+                    <!-- Ornament -->
+                    <svg class="back-cover-ornament" viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 20 Q30 8 60 20 Q90 32 110 20"/>
+                        <ellipse cx="35" cy="12" rx="9" ry="5.5" transform="rotate(-30 35 12)"/>
+                        <ellipse cx="60" cy="20" rx="9" ry="5.5"/>
+                        <ellipse cx="85" cy="28" rx="9" ry="5.5" transform="rotate(30 85 28)"/>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pago Movil Modal -->
+    <div class="modal-overlay" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle" aria-hidden="true">
+        <div class="modal">
+            <div class="modal__header">
+                <button type="button" class="modal__close" id="modalClose" aria-label="Cerrar ventana de pago">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="modal__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <h2 class="modal__title" id="paymentModalTitle">Pago Movil</h2>
+                <p class="modal__subtitle">Copia los datos y pega en tu app bancaria</p>
+            </div>
+
+            <div class="modal__body">
+                <div class="payment-info">
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Banco</span>
+                        <span class="payment-info__value">0102</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Telefono</span>
+                        <span class="payment-info__value">0412-499-9477</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Cedula</span>
+                        <span class="payment-info__value">V-XX.XXX.XXX</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Banco</span>
+                        <div class="payment-info__bank">0102 - Banco de Venezuela</div>
+                    </div>
+                </div>
+
+                <div class="payment-mesa-note">
+                    Recuerda en el pago movil colocar el numero de tu mesa
+                </div>
+
+                <button type="button" class="modal__copy-btn" id="btnCopyPayment" aria-label="Copiar datos de pago al portapapeles">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    <span id="btnCopyLabel">Copiar Datos</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page-flip library -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // State
+        var audioCtx = null;
+        var pageFlipInstance = null;
+        var currentPage = 0;
+        var totalPages = 0;
+        var isFlipping = false;
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var pageCurrentEl = document.getElementById('pageCurrent');
+        var pageTotalEl = document.getElementById('pageTotal');
+        var keyboardHint = document.getElementById('keyboardHint');
+        var loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Audio
+        function getAudioContext() {
+            if (!audioCtx) {
+                try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return null; }
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            return audioCtx;
+        }
+
+        function createPageTurnSound(ctx) {
+            if (!ctx || prefersReducedMotion) return null;
+            try {
+                var now = ctx.currentTime;
+
+                // Layer 1: Paper swoosh (low frequency whoosh)
+                var dur = 0.35;
+                var buf = Math.floor(ctx.sampleRate * dur);
+                var data = ctx.createBuffer(1, buf, ctx.sampleRate);
+                var ch = data.getChannelData(0);
+                for (var i = 0; i < buf; i++) {
+                    var t = i / buf;
+                    var envelope = Math.sin(t * Math.PI);
+                    ch[i] = (Math.random() * 2 - 1) * envelope * 0.3;
+                }
+                var src = ctx.createBufferSource();
+                src.buffer = data;
+                var lp = ctx.createBiquadFilter();
+                lp.type = 'lowpass'; lp.frequency.value = 2000;
+                lp.frequency.setValueAtTime(2000, now);
+                lp.frequency.linearRampToValueAtTime(800, now + dur);
+                var g1 = ctx.createGain();
+                g1.gain.setValueAtTime(0, now);
+                g1.gain.linearRampToValueAtTime(0.4, now + 0.02);
+                g1.gain.setValueAtTime(0.35, now + 0.08);
+                g1.gain.exponentialRampToValueAtTime(0.001, now + dur);
+                src.connect(lp); lp.connect(g1); g1.connect(ctx.destination);
+                src.start(now); src.stop(now + dur);
+
+                // Layer 2: Paper crinkle (high frequency snaps)
+                var cDur = 0.2;
+                var cBuf = Math.floor(ctx.sampleRate * cDur);
+                var cData = ctx.createBuffer(1, cBuf, ctx.sampleRate);
+                var cCh = cData.getChannelData(0);
+                for (var j = 0; j < cBuf; j++) {
+                    var ct = j / cBuf;
+                    var cEnv = Math.sin(ct * Math.PI) * (1 - ct * 0.5);
+                    cCh[j] = Math.random() > 0.88 ? (Math.random() * 2 - 1) * 0.6 * cEnv : (Math.random() * 2 - 1) * 0.03;
+                }
+                var cSrc = ctx.createBufferSource();
+                cSrc.buffer = cData;
+                var cF = ctx.createBiquadFilter();
+                cF.type = 'bandpass'; cF.frequency.value = 4500; cF.Q.value = 0.8;
+                var cG = ctx.createGain();
+                cG.gain.setValueAtTime(0, now + 0.02);
+                cG.gain.linearRampToValueAtTime(0.25, now + 0.04);
+                cG.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+                cSrc.connect(cF); cF.connect(cG); cG.connect(ctx.destination);
+                cSrc.start(now + 0.02); cSrc.stop(now + 0.22);
+
+                // Layer 3: Soft thump (page landing)
+                var tO = ctx.createOscillator();
+                tO.type = 'sine';
+                tO.frequency.setValueAtTime(120, now + 0.15);
+                tO.frequency.exponentialRampToValueAtTime(40, now + 0.3);
+                var tG = ctx.createGain();
+                tG.gain.setValueAtTime(0, now + 0.15);
+                tG.gain.linearRampToValueAtTime(0.15, now + 0.16);
+                tG.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                tO.connect(tG); tG.connect(ctx.destination);
+                tO.start(now + 0.15); tO.stop(now + 0.3);
+
+                // Layer 4: Subtle mid air movement
+                var mDur = 0.3;
+                var mBuf = Math.floor(ctx.sampleRate * mDur);
+                var mData = ctx.createBuffer(1, mBuf, ctx.sampleRate);
+                var mCh = mData.getChannelData(0);
+                for (var k = 0; k < mBuf; k++) {
+                    var mt = k / mBuf;
+                    var mEnv = Math.sin(mt * Math.PI) * 0.15;
+                    mCh[k] = (Math.random() * 2 - 1) * mEnv;
+                }
+                var mSrc = ctx.createBufferSource();
+                mSrc.buffer = mData;
+                var mF = ctx.createBiquadFilter();
+                mF.type = 'bandpass'; mF.frequency.value = 1200; mF.Q.value = 0.5;
+                var mG = ctx.createGain();
+                mG.gain.setValueAtTime(0, now);
+                mG.gain.linearRampToValueAtTime(0.12, now + 0.05);
+                mG.gain.exponentialRampToValueAtTime(0.001, now + mDur);
+                mSrc.connect(mF); mF.connect(mG); mG.connect(ctx.destination);
+                mSrc.start(now); mSrc.stop(now + mDur);
+
+                return src;
+            } catch (e) { return null; }
+        }
+
+        function playPageSound() {
+            if (prefersReducedMotion) return;
+            var ctx = getAudioContext();
+            if (ctx) createPageTurnSound(ctx);
+        }
+
+        function triggerHaptic() {
+            if ('vibrate' in navigator && !prefersReducedMotion) {
+                try { navigator.vibrate(15); } catch (e) {}
+            }
+        }
+
+        // Init book
+        function initBook() {
+            var bookElement = document.getElementById('book');
+            var pages = bookElement.querySelectorAll('.page');
+            totalPages = pages.length;
+            pageTotalEl.textContent = totalPages;
+            bookElement.style.display = 'block';
+
+            // ── Dimension calculation ─────────────────────────────────
+            // FlipHTML5 ratio: 1 page = 1 : 1.86  (378 × 702 px)
+            // Two-page spread = 2W × H
+            // Target: ~85 % of viewport width & height, dark bg visible around
+            var vw = window.innerWidth;
+            var vh = window.innerHeight;
+            var isMobile = vw < 640;
+
+            var pageW, pageH;
+            if (isMobile) {
+                // Portrait — single page fills 88 % of width
+                pageW = Math.floor(vw * 0.88);
+                pageH = Math.floor(pageW * 1.86);
+                if (pageH > vh * 0.90) {
+                    pageH = Math.floor(vh * 0.90);
+                    pageW = Math.floor(pageH / 1.86);
+                }
+            } else {
+                // Landscape — two-page spread fills 85 % of width
+                pageW = Math.floor((vw * 0.85) / 2);
+                pageH = Math.floor(pageW * 1.86);
+                if (pageH > vh * 0.90) {
+                    pageH = Math.floor(vh * 0.90);
+                    pageW = Math.floor(pageH / 1.86);
+                }
+            }
+
+            pageFlipInstance = new St.PageFlip(bookElement, {
+                width: pageW,
+                height: pageH,
+                size: 'fixed',
+                minWidth: 150,
+                maxWidth: 2400,
+                minHeight: 200,
+                maxHeight: 2000,
+                maxShadowOpacity: 0.3,
+                showCover: false,
+                mobileScrollSupport: false,
+                clickEventForward: false,
+                useMouseEvents: true,
+                swipeDistance: 30,
+                flippingTime: 500,
+                drawShadow: true,
+                autoSize: false,
+                startPage: 0,
+                startZIndex: 0,
+                usePortrait: isMobile,
+                disableClipboardEvents: false
+            });
+
+            pageFlipInstance.loadFromHTML(pages);
+
+            // ── Debounced resize handler ──────────────────────────────
+            var resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    var nvw = window.innerWidth;
+                    var nvh = window.innerHeight;
+                    var nMobile = nvw < 640;
+                    var nPW, nPH;
+                    if (nMobile) {
+                        nPW = Math.floor(nvw * 0.88);
+                        nPH = Math.floor(nPW * 1.86);
+                        if (nPH > nvh * 0.90) {
+                            nPH = Math.floor(nvh * 0.90);
+                            nPW = Math.floor(nPH / 1.86);
+                        }
+                    } else {
+                        nPW = Math.floor((nvw * 0.85) / 2);
+                        nPH = Math.floor(nPW * 1.86);
+                        if (nPH > nvh * 0.90) {
+                            nPH = Math.floor(nvh * 0.90);
+                            nPW = Math.floor(nPH / 1.86);
+                        }
+                    }
+                    pageFlipInstance.resize(nPW, nPH);
+                }, 300);
+            });
+
+            pageFlipInstance.on('flip', function (e) {
+                if (isFlipping) return;
+                isFlipping = true;
+                currentPage = e.data;
+                pageCurrentEl.textContent = currentPage + 1;
+                playPageSound();
+                triggerHaptic();
+
+                setTimeout(function () { isFlipping = false; }, 800);
+            });
+
+            setTimeout(function () {
+                loadingOverlay.classList.add('hidden');
+                setTimeout(function () { loadingOverlay.style.display = 'none'; }, 500);
+            }, 300);
+
+            if (!('ontouchstart' in window) && !prefersReducedMotion) {
+                setTimeout(function () {
+                    keyboardHint.classList.add('show');
+                    setTimeout(function () { keyboardHint.classList.remove('show'); }, 4000);
+                }, 1200);
+            }
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', function (e) {
+            if (!pageFlipInstance) return;
+            switch (e.key) {
+                case 'ArrowRight': e.preventDefault(); pageFlipInstance.flipNext(); break;
+                case 'ArrowLeft': e.preventDefault(); pageFlipInstance.flipPrev(); break;
+                case 'Escape': e.preventDefault(); window.location.href = 'Prototipo%20menu.html'; break;
+            }
+        });
+
+        // Touch haptic
+        var touchStartX = 0;
+        document.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+        document.addEventListener('touchend', function (e) {
+            if (Math.abs(e.changedTouches[0].clientX - touchStartX) > 50) triggerHaptic();
+        }, { passive: true });
+
+        // Performance
+        var flipBookEl = document.getElementById('book');
+        if (flipBookEl) flipBookEl.style.willChange = 'transform';
+        setTimeout(function () { if (flipBookEl) flipBookEl.style.willChange = 'auto'; }, 5000);
+
+        // bfcache
+        window.addEventListener('pageshow', function (e) { if (e.persisted) loadingOverlay.style.display = 'none'; });
+
+        // Init
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(initBook, 100); });
+        } else {
+            setTimeout(initBook, 100);
+        }
+
+        setTimeout(function () {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(function () { loadingOverlay.style.display = 'none'; }, 500);
+        }, 5000);
+
+        // ── Pago Movil Modal ─────────────────────────────────────
+        var pagoBtn = document.getElementById('btnPagoMovil');
+        var modalOverlay = document.getElementById('paymentModal');
+        var modalCloseBtn = document.getElementById('modalClose');
+        var copyBtn = document.getElementById('btnCopyPayment');
+        var copyLabel = document.getElementById('btnCopyLabel');
+
+        function openPagoModal() {
+            modalOverlay.classList.add('is-open');
+            modalOverlay.setAttribute('aria-hidden', 'false');
+            setTimeout(function () { modalCloseBtn.focus(); }, 100);
+        }
+
+        function closePagoModal() {
+            modalOverlay.classList.remove('is-open');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        if (pagoBtn) pagoBtn.addEventListener('click', openPagoModal);
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closePagoModal);
+        if (modalOverlay) modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closePagoModal(); });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('is-open')) {
+                closePagoModal();
+            }
+        });
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                var text = 'Pago Movil\nBanco: 0102\nTelefono: 0412-499-9477\nCedula: V-XX.XXX.XXX\nBanco: 0102 - Banco de Venezuela';
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(function () {
+                        copyBtn.classList.add('is-copied');
+                        copyLabel.textContent = 'Copiado!';
+                        setTimeout(function () { copyBtn.classList.remove('is-copied'); copyLabel.textContent = 'Copiar Datos'; }, 2000);
+                    });
+                } else {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    copyBtn.classList.add('is-copied');
+                    copyLabel.textContent = 'Copiado!';
+                    setTimeout(function () { copyBtn.classList.remove('is-copied'); copyLabel.textContent = 'Copiar Datos'; }, 2000);
+                }
+            });
+        }
+
+    })();
+    </script>
+</body>
+</html>

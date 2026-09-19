@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Coffee Corner — Un lugar diferente en el casco de la Ciudad de Maturin. Cafe, comida y buena vibra.">
+    <meta name="theme-color" content="#3C2415">
+    <title>The Coffee Corner — Cafe &amp; Bar</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%233C2415'/%3E%3Cpath d='M30 35h35a5 5 0 0 1 5 5v10a12 12 0 0 1-12 12H37a12 12 0 0 1-12-12V40a5 5 0 0 1 5-5z' fill='none' stroke='%23C4956A' stroke-width='3'/%3E%3Cpath d='M65 42h5a5 5 0 0 1 5 5v3a5 5 0 0 1-5 5h-5' fill='none' stroke='%23C4956A' stroke-width='3'/%3E%3Cline x1='35' y1='28' x2='35' y2='33' stroke='%23C4956A' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='42' y1='26' x2='42' y2='33' stroke='%23C4956A' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='49' y1='28' x2='49' y2='33' stroke='%23C4956A' stroke-width='2.5' stroke-linecap='round'/%3E%3Ctext x='50' y='82' text-anchor='middle' fill='%23C4956A' font-family='serif' font-size='11' font-weight='bold'%3E☕%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;1,500;1,700&family=Libre+Franklin:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           THE COFFEE CORNER — LANDING PAGE DESIGN
+           ============================================ */
+        :root {
+            --espresso: #3C2415;
+            --dark-roast: #5C3A21;
+            --medium-roast: #7B5233;
+            --caramel: #C4956A;
+            --latte: #D4A574;
+            --mocha: #A67B5B;
+            --cream: #F5EDE3;
+            --warm-white: #FDFAF6;
+            --oat: #E8DDD0;
+            --sage: #6B7F5E;
+            --moss: #4A5E3F;
+            --leaf: #8BA37A;
+            --terracotta: #B5694D;
+            --ink: #2D2A27;
+
+            --font-heading: 'Alegreya', Georgia, serif;
+            --font-body: 'Alegreya', Georgia, serif;
+            --font-ui: 'Libre Franklin', 'Arial Narrow', sans-serif;
+
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 64px;
+
+            --radius-sm: 4px; --radius: 8px; --radius-lg: 12px; --radius-xl: 16px;
+
+            --shadow-sm: 0 1px 3px rgba(60,36,21,.08), 0 1px 2px rgba(60,36,21,.06);
+            --shadow: 0 4px 12px rgba(60,36,21,.10), 0 2px 4px rgba(60,36,21,.06);
+            --shadow-lg: 0 12px 32px rgba(60,36,21,.12), 0 4px 8px rgba(60,36,21,.08);
+            --shadow-plaque: 7px 7px 0 rgba(60,36,21,.12);
+
+            --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-fast: 150ms var(--ease-out);
+            --transition: 250ms var(--ease-out);
+            --transition-slow: 400ms var(--ease-in-out);
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --cream: #1A1410;
+            --warm-white: #120E0A;
+            --oat: #231A12;
+            --ink: var(--cream);
+            --espresso: #0E0B08;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Reset */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        section[id] { scroll-margin-top: 72px; }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--ink);
+            background-color: var(--warm-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--espresso);
+            color: var(--cream);
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+            z-index: 10000;
+            transition: top var(--transition);
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 0; outline: 3px solid var(--sage); outline-offset: 2px; }
+
+        :focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+        /* Container */
+        .container { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 var(--space-lg); }
+
+        /* Entrance Animations */
+        .animate-in { opacity: 0; transform: translateY(28px); animation: fadeInUp 0.7s var(--ease-out) forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .animate-scale { opacity: 0; transform: scale(0.85); animation: scaleIn 0.6s var(--ease-spring) forwards; }
+        @keyframes scaleIn { to { opacity: 1; transform: scale(1); } }
+        .delay-1 { animation-delay: 100ms; } .delay-2 { animation-delay: 200ms; }
+        .delay-3 { animation-delay: 300ms; } .delay-4 { animation-delay: 400ms; }
+        .delay-5 { animation-delay: 500ms; } .delay-6 { animation-delay: 600ms; }
+
+        /* Paper Pattern */
+        .paper-pattern {
+            background-color: var(--warm-white);
+            background-image:
+                linear-gradient(45deg, rgba(60,36,21,.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(60,36,21,.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(60,36,21,.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(60,36,21,.03) 75%);
+            background-size: 32px 32px;
+            background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 8000;
+            background: var(--espresso);
+            border-bottom: 1px solid rgba(245,237,227,.1);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            height: 60px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .header-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid var(--caramel);
+        }
+
+        .header-brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--caramel);
+            letter-spacing: 0.06em;
+        }
+
+        .brand-tag {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.5rem;
+            color: var(--oat);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .header-nav { display: none; }
+
+        .nav-link {
+            position: relative;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--oat);
+            letter-spacing: 0.1em;
+            padding: var(--space-sm) var(--space-md);
+            transition: color var(--transition);
+            text-decoration: none;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: .15rem;
+            width: 100%; height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .25s ease;
+        }
+
+        .nav-link:hover { color: var(--caramel); }
+        .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+        .header-cta {
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: var(--espresso);
+            background: var(--sage);
+            padding: 8px 18px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition), transform var(--transition);
+            text-decoration: none;
+        }
+
+        .header-cta:hover { background: var(--leaf); transform: translateY(-1px); }
+
+        @media (min-width: 768px) { .header-nav { display: flex; align-items: center; } }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            background: var(--espresso);
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            z-index: -1;
+            opacity: .25;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(245,237,227,.3) 0 1px, transparent 1.5px),
+                linear-gradient(45deg, transparent 47%, rgba(245,237,227,.08) 48%, rgba(245,237,227,.08) 52%, transparent 53%);
+            background-size: 18px 18px, 42px 42px;
+        }
+
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2xl);
+            max-width: 960px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .hero-inner {
+                flex-direction: row;
+                gap: var(--space-3xl);
+                padding: var(--space-3xl) var(--space-xl);
+            }
+        }
+
+        .hero-text { text-align: center; flex: 1; }
+        @media (min-width: 768px) { .hero-text { text-align: left; } }
+
+        .hero-logo-img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid var(--caramel);
+            padding: 4px;
+            background: rgba(60,36,21,.3);
+            margin: 0 auto var(--space-lg);
+        }
+
+        @media (min-width: 768px) { .hero-logo-img { margin: 0 0 var(--space-lg); } }
+
+        .hero-kicker {
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            color: var(--caramel);
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2.4rem, 7vw, 4.5rem);
+            letter-spacing: 0.04em;
+            line-height: 1;
+            color: var(--cream);
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-diamond {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (min-width: 768px) { .hero-diamond { justify-content: flex-start; } }
+
+        .diamond-line { width: min(17vw, 80px); height: 1px; background: rgba(245,237,227,.35); }
+        .diamond-char { color: var(--caramel); font-size: 0.7rem; }
+
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--oat);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: rgba(245,237,227,.5);
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--espresso);
+            background: var(--sage);
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .hero-cta:hover { background: var(--leaf); transform: translateY(-2px); }
+
+        /* Hero Photo */
+        .hero-photo-wrap {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .hero-photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .hero-photo-grid img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: var(--radius);
+            filter: brightness(0.9) saturate(0.85);
+            transition: filter var(--transition), transform var(--transition);
+        }
+
+        .hero-photo-grid img:hover {
+            filter: brightness(1) saturate(1);
+            transform: scale(1.02);
+        }
+
+        @media (min-width: 768px) { .hero-photo-wrap { width: 420px; } }
+
+        /* ============================================
+           ORNAMENT LINE
+           ============================================ */
+        .ornament-line {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .ornament-line::before, .ornament-line::after {
+            content: "";
+            width: min(17vw, 150px);
+            height: 1px;
+            background: rgba(60,36,21,.25);
+        }
+
+        .section-title {
+            font-family: var(--font-ui);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            color: var(--ink);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* Color Bar */
+        .color-bar { display: flex; gap: 0; margin-bottom: var(--space-2xl); }
+        .bar-brown { flex: 1; height: 3px; background: var(--espresso); }
+        .bar-sage { flex: 1; height: 3px; background: var(--sage); }
+
+        /* ============================================
+           EXPLORA SECTION
+           ============================================ */
+        .explora { padding: var(--space-3xl) 0; }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 600px) { .quick-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); } }
+
+        .quick-plaque {
+            display: flex;
+            min-height: 200px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--ink);
+            border: 1px solid rgba(60,36,21,.25);
+            outline: 1px solid rgba(60,36,21,.1);
+            outline-offset: 5px;
+            background: rgba(245,237,227,.5);
+            transition: transform .25s ease, box-shadow .25s ease;
+            cursor: pointer;
+        }
+
+        .quick-plaque:hover { transform: translateY(-3px); box-shadow: var(--shadow-plaque); }
+
+        .quick-plaque.featured {
+            color: var(--cream);
+            background: var(--espresso);
+            border-color: var(--sage);
+        }
+
+        .quick-plaque.featured:hover { box-shadow: 7px 7px 0 rgba(107,127,94,.25); }
+
+        .seal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: var(--space-md);
+        }
+
+        .seal svg { width: 36px; height: 36px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .plaque-label {
+            font-family: var(--font-ui);
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .plaque-text { font-family: var(--font-body); font-size: 0.85rem; opacity: 0.7; }
+
+        /* ============================================
+           LOCATION SECTION
+           ============================================ */
+        .location { padding: var(--space-3xl) 0; }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) { .location-grid { grid-template-columns: 1fr 1fr; gap: var(--space-xl); } }
+
+        .location-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-2xl) var(--space-lg);
+            border: 1px solid rgba(60,36,21,.25);
+            outline: 1px solid rgba(60,36,21,.1);
+            outline-offset: 5px;
+            background: rgba(245,237,227,.4);
+        }
+
+        .location-pin {
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            color: var(--cream);
+            margin-bottom: var(--space-lg);
+        }
+
+        .location-pin svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .location-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; margin-bottom: var(--space-sm); }
+
+        .location-address { font-size: 0.9rem; color: var(--ink); opacity: 0.7; margin-bottom: var(--space-sm); line-height: 1.5; }
+
+        .location-hours {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--sage);
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-lg);
+        }
+
+        .location-wifi {
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            color: var(--mocha);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .location-wifi svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .directions-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            color: var(--cream);
+            background: var(--terracotta);
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .directions-btn:hover { background: #9E5A42; transform: translateY(-1px); }
+        .directions-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* Map Card */
+        .map-card {
+            position: relative;
+            min-height: 345px;
+            overflow: hidden;
+            background: #d5c4a1;
+            box-shadow: 10px 10px 0 rgba(60,36,21,.10);
+        }
+
+        .map-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        .map-marker {
+            position: absolute;
+            top: 50%; left: 50%;
+            z-index: 2;
+            display: grid;
+            width: 60px; height: 60px;
+            place-items: center;
+            color: var(--cream);
+            background: var(--terracotta);
+            border: 4px double var(--cream);
+            border-radius: 50% 50% 50% 0;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            pointer-events: none;
+        }
+
+        .map-marker svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transform: rotate(45deg); }
+
+        /* ============================================
+           MOTIVATIONAL QUOTE
+           ============================================ */
+        .quote-section {
+            background: var(--espresso);
+            padding: var(--space-3xl) var(--space-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            opacity: .15;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(196,149,106,.3) 0 1px, transparent 1.5px);
+            background-size: 18px 18px;
+        }
+
+        .quote-text {
+            position: relative;
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            color: var(--cream);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        .quote-mark {
+            font-size: 2.5rem;
+            color: var(--caramel);
+            opacity: 0.6;
+            font-style: normal;
+            line-height: 0;
+            vertical-align: -0.15em;
+        }
+
+        /* ============================================
+           PHOTOS GALLERY
+           ============================================ */
+        .gallery { padding: var(--space-3xl) 0; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (min-width: 600px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; } }
+
+        .gallery-grid img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: var(--radius);
+            filter: brightness(0.88) saturate(0.8);
+            transition: filter var(--transition), transform var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { filter: brightness(1) saturate(1); transform: scale(1.03); }
+
+        /* ============================================
+           PAYMENT MODAL
+           ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 42, 39, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-slow);
+        }
+
+        .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+        .modal {
+            background: var(--warm-white);
+            border: 1px solid rgba(60,36,21,.25);
+            outline: 1px solid rgba(60,36,21,.1);
+            outline-offset: 5px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(24px) scale(0.95);
+            transition: transform var(--transition-slow);
+            position: relative;
+        }
+
+        .modal-overlay.is-open .modal { transform: translateY(0) scale(1); }
+
+        .modal__header { padding: var(--space-xl) var(--space-xl) var(--space-md); text-align: center; position: relative; }
+
+        .modal__close {
+            position: absolute;
+            top: var(--space-md); right: var(--space-md);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--oat);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .modal__close:hover { background: var(--caramel); transform: rotate(90deg); }
+        .modal__close svg { width: 18px; height: 18px; stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; }
+
+        .modal__icon {
+            width: 56px; height: 56px;
+            border-radius: var(--radius);
+            background: var(--sage);
+            color: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+        }
+
+        .modal__icon svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .modal__title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-bottom: var(--space-xs); }
+        .modal__subtitle { font-size: 0.88rem; color: var(--ink); opacity: 0.6; }
+
+        .modal__body { padding: 0 var(--space-xl) var(--space-lg); }
+
+        .payment-info {
+            background: var(--oat);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .payment-info__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(60,36,21,.15);
+        }
+
+        .payment-info__row:last-child { border-bottom: none; }
+
+        .payment-info__label {
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            color: var(--ink);
+            opacity: 0.55;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+        }
+
+        .payment-info__value {
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: right;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .payment-info__bank {
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            background: rgba(245,237,227,.6);
+            border-left: 3px solid var(--sage);
+        }
+
+        .modal__copy-btn {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            background: var(--espresso);
+            color: var(--cream);
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            min-height: 52px;
+        }
+
+        .modal__copy-btn:hover { background: var(--dark-roast); box-shadow: var(--shadow); transform: translateY(-1px); }
+        .modal__copy-btn:active { transform: translateY(0) scale(0.98); }
+        .modal__copy-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .modal__copy-btn.is-copied { background: var(--moss); }
+
+        /* ============================================
+           TOAST
+           ============================================ */
+        .toast {
+            position: fixed;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--warm-white);
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform var(--transition-slow), opacity var(--transition-slow);
+            box-shadow: var(--shadow-lg);
+            max-width: calc(100vw - 32px);
+            text-align: center;
+        }
+
+        .toast--success { border-left: 4px solid var(--moss); }
+        .toast--error { border-left: 4px solid var(--terracotta); }
+        .toast.is-visible { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+        .toast__icon { width: 20px; height: 20px; flex-shrink: 0; }
+        .toast--success .toast__icon { color: var(--moss); }
+        .toast--error .toast__icon { color: var(--terracotta); }
+
+        /* ============================================
+           PAGE TRANSITION
+           ============================================ */
+        .page-transition {
+            position: fixed;
+            inset: 0;
+            background: var(--espresso);
+            z-index: 9999;
+            transform: scaleY(0);
+            transform-origin: top;
+            pointer-events: none;
+            opacity: 0;
+            will-change: transform;
+        }
+
+        .page-transition::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(107,127,94,.08) 0%, transparent 50%);
+        }
+
+        .page-transition.is-entering { animation: transitionIn 0.45s var(--ease-in-out) forwards; }
+        .page-transition.is-exiting { animation: transitionOut 0.45s var(--ease-in-out) forwards; }
+
+        @keyframes transitionIn { 0% { transform: scaleY(0); transform-origin: top; opacity: 1; } 100% { transform: scaleY(1); transform-origin: top; opacity: 1; } }
+        @keyframes transitionOut { 0% { transform: scaleY(1); transform-origin: bottom; opacity: 1; } 100% { transform: scaleY(0); transform-origin: bottom; opacity: 1; } }
+
+        /* ============================================
+           GALLERY
+           ============================================ */
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .site-footer {
+            background: var(--dark-roast);
+            color: var(--cream);
+            text-align: center;
+            padding: var(--space-3xl) var(--space-lg) var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-inner { position: relative; z-index: 1; }
+
+        .footer-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid var(--caramel);
+            padding: 2px;
+            margin: 0 auto var(--space-md);
+            opacity: 0.8;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 0.06em;
+            color: var(--caramel);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-socials { display: flex; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-xl); }
+
+        .social-link {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(245,237,227,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition), transform var(--transition);
+            color: var(--cream);
+        }
+
+        .social-link:hover { background: rgba(245,237,227,.18); transform: translateY(-2px); }
+        .social-link svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .footer-divider { width: 60px; height: 1px; background: var(--caramel); opacity: 0.3; margin: 0 auto var(--space-lg); }
+
+        .footer-made { font-family: var(--font-ui); font-size: 0.78rem; opacity: 0.45; letter-spacing: 0.04em; }
+
+        /* ============================================
+           INTERACTION ENHANCEMENTS
+           ============================================ */
+        .quick-plaque:focus-visible, .nav-link:focus-visible, .social-link:focus-visible,
+        .hero-cta:focus-visible, .directions-btn:focus-visible {
+            outline: 3px solid var(--sage); outline-offset: 4px;
+        }
+
+        .quick-grid .quick-plaque:nth-child(1) { animation-delay: 0.1s; }
+        .quick-grid .quick-plaque:nth-child(2) { animation-delay: 0.2s; }
+        .quick-grid .quick-plaque:nth-child(3) { animation-delay: 0.3s; }
+        .quick-grid .quick-plaque:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: inherit;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-menu-toggle span {
+            display: block; width: 24px; height: 2px;
+            background: currentColor;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .mobile-menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .mobile-menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+        .mobile-menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (max-width: 767px) {
+            .mobile-menu-toggle { display: flex; }
+            .header-nav {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--dark-roast);
+                border-bottom: 1px solid rgba(245,237,227,.1);
+                flex-direction: column;
+                padding: var(--space-md) 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+            .header-nav.open { display: flex; }
+            .header-nav .nav-link { padding: var(--space-md) var(--space-lg); width: 100%; text-align: center; }
+            .header-cta { display: none; }
+        }
+
+        /* Small screens */
+        @media (max-width: 360px) {
+            .hero-logo-img { width: 100px; height: 100px; }
+            .hero-title { font-size: 2.2rem; }
+            .quick-grid { gap: var(--space-sm); }
+            .quick-plaque { min-height: 160px; padding: 1rem; }
+        }
+
+        /* Print */
+        @media print {
+            .page-transition, .toast, .modal-overlay, .skip-link, .site-header { display: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a href="#inicio" class="header-brand">
+                <img src="logo-coffee-corner.jpg" alt="" class="header-logo-img" loading="eager">
+                <div class="header-brand-text">
+                    <span class="brand-name">The Coffee Corner</span>
+                    <span class="brand-tag">Cafe &amp; Bar</span>
+                </div>
+            </a>
+            <nav id="headerNav" class="header-nav" aria-label="Navegacion principal">
+                <a href="#inicio" class="nav-link">INICIO</a>
+                <a href="#explora" class="nav-link">MENU</a>
+                <a href="#galeria" class="nav-link">GALERIA</a>
+                <a href="#encuentranos" class="nav-link">VISITANOS</a>
+            </nav>
+            <a href="Cuaderno.html" class="header-cta" data-transition>ABRIR MENU</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu de navegacion" aria-expanded="false" aria-controls="headerNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HERO
+         ========================================== -->
+    <section id="inicio" class="hero" role="banner">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <img src="logo-coffee-corner.jpg" alt="The Coffee Corner" class="hero-logo-img animate-scale" loading="eager">
+                <p class="hero-kicker animate-in">CAFE &amp; BAR</p>
+                <h1 class="hero-title animate-in delay-1">The Coffee Corner</h1>
+                <div class="hero-diamond animate-in delay-2" aria-hidden="true">
+                    <span class="diamond-line"></span>
+                    <span class="diamond-char">&#9670;</span>
+                    <span class="diamond-line"></span>
+                </div>
+                <p class="hero-subtitle animate-in delay-3">"Disfruta de la vida, sorbo a sorbo"</p>
+                <p class="hero-tagline animate-in delay-4">Un lugar diferente en el casco de la Ciudad de Maturin &#x1F335;</p>
+                <a href="#explora" class="hero-cta animate-in delay-5">ABRIR MENU</a>
+            </div>
+            <div class="hero-photo-wrap animate-in delay-3">
+                <div class="hero-photo-grid">
+                    <img src="Fotos del lugar de los menus/photo_2026-09-07_15-20-41.jpg" alt="Interior de The Coffee Corner" loading="lazy">
+                    <img src="Fotos del lugar de los menus/photo_2026-09-07_15-21-46.jpg" alt="Ambiente de The Coffee Corner" loading="lazy">
+                    <img src="Fotos del lugar de los menus/photo_1_2026-09-07_15-22-28.jpg" alt="The Coffee Corner detalles" loading="lazy">
+                    <img src="Fotos del lugar de los menus/photo_2_2026-09-07_15-22-28.jpg" alt="The Coffee Corner espacio" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <main id="main-content" role="main">
+
+        <!-- ==========================================
+             EXPLORA
+             ========================================== -->
+        <section id="explora" class="explora paper-pattern">
+            <div class="container">
+                <div class="ornament-line animate-in">
+                    <h2 class="section-title">EXPLORA</h2>
+                </div>
+                <div class="quick-grid">
+
+                    <!-- Menu -->
+                    <a href="Cuaderno.html" class="quick-plaque featured animate-in delay-1" data-transition aria-label="Abrir menu interactivo">
+                        <span class="seal">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </span>
+                        <span class="plaque-label">MENU</span>
+                        <span class="plaque-text">Explora nuestra carta</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/coffeecorner.mat/" target="_blank" rel="noopener noreferrer" class="quick-plaque animate-in delay-2" aria-label="Visita nuestro Instagram">
+                        <span class="seal">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </span>
+                        <span class="plaque-label">INSTAGRAM</span>
+                        <span class="plaque-text">@coffeecorner.mat</span>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/584124999477?text=Hola,%20me%20gustaria%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="quick-plaque animate-in delay-3" aria-label="Escríbenos por WhatsApp">
+                        <span class="seal">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                        </span>
+                        <span class="plaque-label">WHATSAPP</span>
+                        <span class="plaque-text">0412-4999477</span>
+                    </a>
+
+                    <!-- Pago Movil -->
+                    <button type="button" class="quick-plaque animate-in delay-4" id="btnPagoMovil" aria-label="Ver datos de pago movil">
+                        <span class="seal">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                <line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                        </span>
+                        <span class="plaque-label">PAGO MOVIL</span>
+                        <span class="plaque-text">Ver datos para pagar</span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             QUOTE
+             ========================================== -->
+        <section class="quote-section" aria-label="Frase motivacional">
+            <p class="quote-text animate-in">
+                <span class="quote-mark">"</span>El Café Ayuda a Quien Duerme Poco y Sueña Mucho<span class="quote-mark">"</span>
+            </p>
+        </section>
+
+        <!-- ==========================================
+             GALERIA
+             ========================================== -->
+        <section id="galeria" class="gallery">
+            <div class="container">
+                <div class="ornament-line animate-in">
+                    <h2 class="section-title">GALERIA</h2>
+                </div>
+                <div class="gallery-grid">
+                    <img src="Fotos del lugar de los menus/photo_3_2026-09-07_15-22-28.jpg" alt="The Coffee Corner galeria" loading="lazy" class="animate-in delay-1">
+                    <img src="Fotos del lugar de los menus/photo_4_2026-09-07_15-22-28.jpg" alt="The Coffee Corner galeria" loading="lazy" class="animate-in delay-2">
+                    <img src="Fotos del lugar de los menus/photo_5_2026-09-07_15-22-28.jpg" alt="The Coffee Corner galeria" loading="lazy" class="animate-in delay-3">
+                    <img src="Fotos del lugar de los menus/photo_6_2026-09-07_15-22-28.jpg" alt="The Coffee Corner galeria" loading="lazy" class="animate-in delay-4">
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ENCUEFNTRANOS
+             ========================================== -->
+        <section id="encuentranos" class="location paper-pattern">
+            <div class="container">
+                <div class="ornament-line animate-in">
+                    <h2 class="section-title">VISITANOS</h2>
+                </div>
+                <div class="location-grid">
+
+                    <article class="location-card animate-in delay-1">
+                        <div class="location-pin" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="location-name">The Coffee Corner</h3>
+                        <p class="location-address">
+                            Mini C.C Cappadoro Local 17<br>
+                            Casco de la Ciudad de Maturin<br>
+                            Estado Monagas, Venezuela
+                        </p>
+                        <p class="location-hours">Lun - Sab &middot; 09:00 AM - 08:00 PM</p>
+                        <p class="location-wifi">
+                            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                            WiFi: ZYXW987
+                        </p>
+                        <a href="https://maps.app.goo.gl/M7ERjT4AtxF231U98" target="_blank" rel="noopener noreferrer" class="directions-btn" aria-label="Como llegar por Google Maps">
+                            <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                            <span>COMO LLEGAR</span>
+                        </a>
+                    </article>
+
+                    <div class="map-card animate-in delay-2">
+                        <iframe src="https://maps.google.com/maps?q=Mini+C.C+Cappadoro+Local+17+Maturin+Monagas+Venezuela&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicacion de The Coffee Corner en Google Maps"></iframe>
+                        <div class="map-marker" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         PAYMENT MODAL
+         ========================================== -->
+    <div class="modal-overlay" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle" aria-hidden="true">
+        <div class="modal">
+            <div class="modal__header">
+                <button type="button" class="modal__close" id="modalClose" aria-label="Cerrar ventana de pago">
+                    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <div class="modal__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <h2 class="modal__title" id="paymentModalTitle">Pago Movil</h2>
+                <p class="modal__subtitle">Copia los datos y pega en tu app bancaria</p>
+            </div>
+
+            <div class="modal__body">
+                <div class="payment-info">
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Banco</span>
+                        <span class="payment-info__value">0102</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Telefono</span>
+                        <span class="payment-info__value">0412-499-9477</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Cedula</span>
+                        <span class="payment-info__value">V-XX.XXX.XXX</span>
+                    </div>
+                    <div class="payment-info__row">
+                        <span class="payment-info__label">Banco</span>
+                        <div class="payment-info__bank">0102 - Banco de Venezuela</div>
+                    </div>
+                </div>
+
+                <button type="button" class="modal__copy-btn" id="btnCopyPayment" aria-label="Copiar datos de pago al portapapeles">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    <span id="btnCopyLabel">Copiar Datos</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="contacto" class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <img src="logo-coffee-corner.jpg" alt="" class="footer-logo-img" loading="lazy">
+            <p class="footer-brand">The Coffee Corner</p>
+            <nav class="footer-socials" aria-label="Redes sociales">
+                <a href="https://www.instagram.com/coffeecorner.mat/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/584124999477?text=Hola,%20me%20gustaria%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                </a>
+            </nav>
+            <div class="footer-divider"></div>
+            <p class="footer-made">Hecho con &#9829; en Maturin, Venezuela</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+        <svg class="toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span id="toastMessage">Datos copiados</span>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        // 1. Entrance Animations
+        (function initAnimations() {
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                document.querySelectorAll('.animate-in, .animate-scale').forEach(function (el) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.style.animation = 'none';
+                });
+                return;
+            }
+            var elements = document.querySelectorAll('.animate-in');
+            elements.forEach(function (el, i) {
+                if (!el.classList.contains('delay-1') && !el.classList.contains('delay-2') &&
+                    !el.classList.contains('delay-3') && !el.classList.contains('delay-4') &&
+                    !el.classList.contains('delay-5') && !el.classList.contains('delay-6')) {
+                    el.style.animationDelay = (i * 100) + 'ms';
+                }
+            });
+        })();
+
+        // 2. Toast
+        var toastEl = document.getElementById('toast');
+        var toastMsg = document.getElementById('toastMessage');
+        var toastTimer = null;
+
+        function showToast(message, type) {
+            type = type || 'success';
+            clearTimeout(toastTimer);
+            toastMsg.textContent = message;
+            toastEl.className = 'toast toast--' + type;
+            void toastEl.offsetHeight;
+            toastEl.classList.add('is-visible');
+            toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 3500);
+        }
+
+        // 3. Payment Modal
+        var modalOverlay = document.getElementById('paymentModal');
+        var modalCloseBtn = document.getElementById('modalClose');
+        var btnPagoMovil = document.getElementById('btnPagoMovil');
+        var lastFocusedElement = null;
+
+        function openModal() {
+            lastFocusedElement = document.activeElement;
+            modalOverlay.classList.add('is-open');
+            modalOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            setTimeout(function () { modalCloseBtn.focus(); }, 100);
+            document.addEventListener('keydown', trapFocus);
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('is-open');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', trapFocus);
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        function trapFocus(e) {
+            if (e.key === 'Escape') { closeModal(); return; }
+            if (e.key !== 'Tab') return;
+            var focusableElements = modalOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            var firstEl = focusableElements[0];
+            var lastEl = focusableElements[focusableElements.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === firstEl) { e.preventDefault(); lastEl.focus(); }
+            } else {
+                if (document.activeElement === lastEl) { e.preventDefault(); firstEl.focus(); }
+            }
+        }
+
+        btnPagoMovil.addEventListener('click', openModal);
+        modalCloseBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
+
+        // 4. Copy Payment Data
+        var btnCopy = document.getElementById('btnCopyPayment');
+        var btnCopyLabel = document.getElementById('btnCopyLabel');
+        var paymentData = 'Banco: 0102\nTelefono: 04124999477\nCedula: V-XX.XXX.XXX';
+
+        btnCopy.addEventListener('click', async function () {
+            try {
+                await navigator.clipboard.writeText(paymentData);
+                btnCopy.classList.add('is-copied');
+                btnCopyLabel.textContent = 'Copiado!';
+                btnCopy.querySelector('svg').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+                showToast('Datos de pago copiados al portapapeles', 'success');
+                setTimeout(function () {
+                    btnCopy.classList.remove('is-copied');
+                    btnCopyLabel.textContent = 'Copiar Datos';
+                    btnCopy.querySelector('svg').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+                }, 2500);
+            } catch (err) {
+                var textArea = document.createElement('textarea');
+                textArea.value = paymentData;
+                textArea.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Datos de pago copiados', 'success');
+                    btnCopy.classList.add('is-copied');
+                    btnCopyLabel.textContent = 'Copiado!';
+                    setTimeout(function () {
+                        btnCopy.classList.remove('is-copied');
+                        btnCopyLabel.textContent = 'Copiar Datos';
+                    }, 2500);
+                } catch (e) {
+                    showToast('No se pudo copiar. Selecciona y copia manualmente.', 'error');
+                }
+                document.body.removeChild(textArea);
+            }
+        });
+
+        // 5. Page Transitions
+        (function initPageTransitions() {
+            var transitionEl = document.getElementById('pageTransition');
+            var transitionLinks = document.querySelectorAll('[data-transition]');
+            transitionLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var href = this.getAttribute('href');
+                    if (!href || href.startsWith('http') || href.startsWith('#') || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                    e.preventDefault();
+                    transitionEl.classList.add('is-entering');
+                    transitionEl.classList.remove('is-exiting');
+                    setTimeout(function () { window.location.href = href; }, 350);
+                });
+            });
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    transitionEl.classList.remove('is-entering');
+                    transitionEl.classList.add('is-exiting');
+                    setTimeout(function () { transitionEl.classList.remove('is-exiting'); }, 500);
+                }
+            });
+        })();
+
+        // 6. Mobile Menu
+        (function initMobileMenu() {
+            var toggleBtn = document.getElementById('mobileMenuToggle');
+            var nav = document.getElementById('headerNav');
+            if (!toggleBtn || !nav) return;
+            toggleBtn.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('open');
+                toggleBtn.classList.toggle('is-open');
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            nav.querySelectorAll('.nav-link').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    nav.classList.remove('open');
+                    toggleBtn.classList.remove('is-open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && nav.classList.contains('open')) {
+                    nav.classList.remove('open');
+                    toggleBtn.classList.remove('is-open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleBtn.focus();
+                }
+            });
+        })();
+
+        // 7. Header Scroll
+        (function initHeaderScroll() {
+            var header = document.querySelector('.site-header');
+            if (!header) return;
+            function updateHeader() {
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(60, 36, 21, 0.97)';
+                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+                } else {
+                    header.style.background = '';
+                    header.style.boxShadow = '';
+                }
+            }
+            window.addEventListener('scroll', updateHeader, { passive: true });
+            updateHeader();
+        })();
+
+        // 8. External Links
+        (function initExternalLinks() {
+            document.querySelectorAll('[target="_blank"]').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    var el = this;
+                    el.classList.add('is-pulse');
+                    setTimeout(function () { el.classList.remove('is-pulse'); }, 300);
+                });
+            });
+        })();
+
+        // 9. Keyboard - Escape closes modal
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+
+        // 10. Reduced Motion Watcher
+        (function initReducedMotionWatcher() {
+            var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+            function handleChange(e) {
+                if (e.matches) {
+                    document.documentElement.style.setProperty('--transition', '0ms');
+                    document.documentElement.style.setProperty('--transition-slow', '0ms');
+                } else {
+                    document.documentElement.style.setProperty('--transition', '250ms var(--ease-out)');
+                    document.documentElement.style.setProperty('--transition-slow', '400ms var(--ease-in-out)');
+                }
+            }
+            handleChange(mq);
+            mq.addEventListener('change', handleChange);
+        })();
+
+    })();
+    </script>
+</body>
+</html>
