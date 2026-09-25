@@ -854,7 +854,7 @@
 
         .pago-movil-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(60, 36, 21, 0.3); }
         .pago-movil-btn:active { transform: translateY(0) scale(0.97); }
-        .pago-movil-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .pago-movil-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 
         .modal-overlay {
             position: fixed;
@@ -1027,7 +1027,7 @@
     </button>
 
     <!-- Floating Volver -->
-    <a href="Prototipo%20menu.html" class="volver-btn" id="volverBtn" aria-label="Volver al inicio">
+    <a href="index.html" class="volver-btn" id="volverBtn" aria-label="Volver al inicio">
         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         Volver al inicio
     </a>
@@ -1532,7 +1532,7 @@
                 maxShadowOpacity: 0.3,
                 showCover: false,
                 mobileScrollSupport: false,
-                clickEventForward: false,
+                clickEventForward: true,
                 useMouseEvents: true,
                 swipeDistance: 30,
                 flippingTime: 500,
@@ -1604,7 +1604,7 @@
             switch (e.key) {
                 case 'ArrowRight': e.preventDefault(); pageFlipInstance.flipNext(); break;
                 case 'ArrowLeft': e.preventDefault(); pageFlipInstance.flipPrev(); break;
-                case 'Escape': e.preventDefault(); window.location.href = 'Prototipo%20menu.html'; break;
+                case 'Escape': e.preventDefault(); window.location.href = 'index.html'; break;
             }
         });
 
