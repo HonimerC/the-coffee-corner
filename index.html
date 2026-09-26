@@ -669,134 +669,136 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(45, 42, 39, 0.55);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             z-index: 9000;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-lg);
             opacity: 0;
             pointer-events: none;
-            transition: opacity var(--transition-slow);
+            transition: opacity 0.3s ease;
+            padding: 16px;
         }
 
         .modal-overlay.is-open { opacity: 1; pointer-events: auto; }
 
         .modal {
-            background: var(--warm-white);
-            border: 1px solid rgba(60,36,21,.25);
-            outline: 1px solid rgba(60,36,21,.1);
-            outline-offset: 5px;
+            background: #FDFAF6;
+            border-radius: 14px;
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             max-height: 90vh;
             overflow-y: auto;
-            transform: translateY(24px) scale(0.95);
-            transition: transform var(--transition-slow);
-            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .modal-overlay.is-open .modal { transform: translateY(0) scale(1); }
 
-        .modal__header { padding: var(--space-xl) var(--space-xl) var(--space-md); text-align: center; position: relative; }
+        .modal__header {
+            padding: 24px 24px 16px;
+            text-align: center;
+            position: relative;
+        }
 
         .modal__close {
             position: absolute;
-            top: var(--space-md); right: var(--space-md);
-            width: 36px; height: 36px;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: var(--oat);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background var(--transition), transform var(--transition);
+            background: rgba(60, 36, 21, 0.08);
+            transition: background 0.2s, transform 0.2s;
         }
 
-        .modal__close:hover { background: var(--caramel); transform: rotate(90deg); }
-        .modal__close svg { width: 18px; height: 18px; stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; }
+        .modal__close:hover { background: rgba(60, 36, 21, 0.15); transform: rotate(90deg); }
+        .modal__close svg { width: 18px; height: 18px; stroke: #3C2415; stroke-width: 2; fill: none; stroke-linecap: round; }
 
         .modal__icon {
-            width: 56px; height: 56px;
-            border-radius: var(--radius);
-            background: var(--sage);
-            color: var(--cream);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4A5E3F, #6B7F5E);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto var(--space-md);
+            margin: 0 auto 12px;
+            color: #FDFAF6;
         }
 
         .modal__icon svg { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-        .modal__title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; margin-bottom: var(--space-xs); }
-        .modal__subtitle { font-size: 0.88rem; color: var(--ink); opacity: 0.6; }
+        .modal__title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: #3C2415; margin-bottom: 4px; }
+        .modal__subtitle { font-size: 0.85rem; color: #3C2415; opacity: 0.6; }
 
-        .modal__body { padding: 0 var(--space-xl) var(--space-lg); }
+        .modal__body { padding: 0 24px 24px; }
 
         .payment-info {
-            background: var(--oat);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-lg);
+            background: rgba(60, 36, 21, 0.05);
+            border: 1px solid rgba(60, 36, 21, 0.1);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
         }
 
         .payment-info__row {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            padding: var(--space-sm) 0;
-            border-bottom: 1px solid rgba(60,36,21,.15);
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(60, 36, 21, 0.08);
         }
 
         .payment-info__row:last-child { border-bottom: none; }
 
-        .payment-info__label {
-            font-family: var(--font-ui);
-            font-size: 0.72rem;
-            color: var(--ink);
-            opacity: 0.55;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-weight: 700;
-        }
+        .payment-info__label { font-family: var(--font-ui); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #7B5233; font-weight: 600; }
+        .payment-info__value { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: #3C2415; }
+        .payment-info__bank { font-size: 0.85rem; color: #5C3A21; font-weight: 500; }
 
-        .payment-info__value {
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-align: right;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 0.02em;
-        }
-
-        .payment-info__bank {
-            font-size: 0.85rem;
-            padding: 4px 8px;
-            background: rgba(245,237,227,.6);
-            border-left: 3px solid var(--sage);
+        .payment-mesa-note {
+            background: rgba(74, 94, 63, 0.1);
+            border: 1px solid rgba(74, 94, 63, 0.2);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-style: italic;
+            color: #5C3A21;
+            text-align: center;
         }
 
         .modal__copy-btn {
             width: 100%;
-            padding: var(--space-md) var(--space-lg);
-            background: var(--espresso);
-            color: var(--cream);
-            font-family: var(--font-ui);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.06em;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: var(--space-sm);
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            gap: 8px;
+            padding: 14px;
+            background: #3C2415;
+            color: #FDFAF6;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
             min-height: 52px;
         }
 
-        .modal__copy-btn:hover { background: var(--dark-roast); box-shadow: var(--shadow); transform: translateY(-1px); }
+        .modal__copy-btn:hover { background: #5C3A21; box-shadow: 0 4px 16px rgba(60, 36, 21, 0.2); transform: translateY(-1px); }
         .modal__copy-btn:active { transform: translateY(0) scale(0.98); }
+        .modal__copy-btn.is-copied { background: #4A5E3F; }
         .modal__copy-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .modal__copy-btn.is-copied { background: var(--moss); }
 
         /* ============================================
            TOAST
@@ -1184,6 +1186,10 @@
                     </div>
                 </div>
 
+                <div class="payment-mesa-note">
+                    Recuerda en el pago movil colocar el numero de tu mesa
+                </div>
+
                 <button type="button" class="modal__copy-btn" id="btnCopyPayment" aria-label="Copiar datos de pago al portapapeles">
                     <svg viewBox="0 0 24 24">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
@@ -1316,7 +1322,7 @@
         // 4. Copy Payment Data
         var btnCopy = document.getElementById('btnCopyPayment');
         var btnCopyLabel = document.getElementById('btnCopyLabel');
-        var paymentData = 'Banco: 0102\nTelefono: 04124999477\nCedula: V-XX.XXX.XXX';
+        var paymentData = 'Pago Movil\nBanco: 0102\nTelefono: 0412-499-9477\nCedula: V-XX.XXX.XXX\nBanco: 0102 - Banco de Venezuela';
 
         btnCopy.addEventListener('click', async function () {
             try {
